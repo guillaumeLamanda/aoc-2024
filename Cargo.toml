@@ -28,3 +28,7 @@ pico-args = "0.5.0"
 tinyjson = "2.5.1"
 
 # Solution dependencies
+itertools = "0.13.0"
+geo = "0.29.2"
+pathfinding = "4.11.0"
+rangetools = "0.1.4"
