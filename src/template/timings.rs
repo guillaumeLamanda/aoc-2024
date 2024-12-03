@@ -183,6 +183,7 @@ mod tests {
 
     use super::{Timing, Timings};
 
+    #[allow(dead_code)]
     fn get_mock_timings() -> Timings {
         Timings {
             data: vec![
@@ -209,6 +210,7 @@ mod tests {
     }
 
     mod deserialization {
+        #[allow(unused_imports)]
         use crate::{day, template::timings::Timings};
 
         #[test]
@@ -246,14 +248,17 @@ mod tests {
     }
 
     mod serialization {
+        #[allow(unused_imports)]
         use super::get_mock_timings;
+        #[allow(unused_imports)]
         use std::collections::HashMap;
+        #[allow(unused_imports)]
         use tinyjson::JsonValue;
 
         #[test]
         fn serializes_timings() {
             let timings = get_mock_timings();
-            let value = JsonValue::try_from(timings).unwrap();
+            let value = JsonValue::from(timings);
             assert_eq!(
                 value
                     .get::<HashMap<String, JsonValue>>()
@@ -269,6 +274,7 @@ mod tests {
     }
 
     mod is_day_complete {
+        #[allow(unused_imports)]
         use crate::{
             day,
             template::timings::{Timing, Timings},
@@ -285,7 +291,7 @@ mod tests {
                 }],
             };
 
-            assert_eq!(timings.is_day_complete(&day!(1)), true);
+            assert!(timings.is_day_complete(day!(1)));
         }
 
         #[test]
@@ -299,7 +305,7 @@ mod tests {
                 }],
             };
 
-            assert_eq!(timings.is_day_complete(&day!(1)), false);
+            assert!(!timings.is_day_complete(day!(1)));
         }
 
         #[test]
@@ -313,17 +319,18 @@ mod tests {
                 }],
             };
 
-            assert_eq!(timings.is_day_complete(&day!(1)), false);
+            assert!(!timings.is_day_complete(day!(1)));
         }
     }
 
     mod merge {
+        #[allow(unused_imports)]
+        use super::get_mock_timings;
+        #[allow(unused_imports)]
         use crate::{
             day,
             template::timings::{Timing, Timings},
         };
-
-        use super::get_mock_timings;
 
         #[test]
         fn handles_disjunct_timings() {
